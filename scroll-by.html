@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scrollBy</title>
+    <style>
+        #box {
+            width:500px; height:250px;
+            overflow-y:auto;
+            overflow-x:hidden;
+        }
+        #box > div {width:500px; height:250px;}
+        #box .a {background:palegoldenrod;}
+        #box .b {background:palegreen;}
+        #box .c {background:paleturquoise;}
+        #box .d {background:palevioletred;}
+    </style>
+</head>
+<body>
+    <button type="button" id="top">위로</button>
+    <button type="button" id="btm">아래로</button>
+    <div id="box">
+        <div class="a">a</div>
+        <div class="b">b</div>
+        <div class="c">c</div>
+        <div class="d">d</div>
+    </div>
+    <script>
+        const topBtn = document.querySelector('#top')
+        const btmBtn = document.querySelector('#btm')
+        const box = document.querySelector('#box')
+        console.log(btmBtn,box,topBtn)
+        btmBtn.addEventListener('click',()=>{
+            box.scrollBy(0, 250)
+        })
+        topBtn.addEventListener('click',()=>{
+            box.scrollBy(0, -250)
+        })
+    </script>
+</body>
+</html>

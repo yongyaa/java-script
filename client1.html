@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client1</title>
+    <style>
+        #pst {
+            padding:50px; position:relative; top:200px;
+        }
+        section {height:100vh; opacity:0;}
+        .s1 {background:aqua; opacity:1;}
+        .s2 {background:pink;}
+        .s3 {background:coral;}
+        .s4 {background:yellow;}
+        .animation {animation:top 2s ease both;}
+        .ani {animation:right 2s ease both;}
+        .a {animation:roa 2s ease both;}
+        @keyframes top {
+            0% {opacity:0; transform:translateY(300px);}
+            100% {opacity:1; transform:translateY(0);}
+        }
+        @keyframes right {
+            0% {opacity:0; transform:translateX(300px);}
+            100% {opacity:1; transform:translateX(0);}
+        }
+        @keyframes roa {
+            0% {opacity:0; transform:skew(45deg);}
+            100% {opacity:1; transform:skew(0);}
+        }
+    </style>
+</head>
+<main>
+    <section class="s1">1</section>
+    <section class="s2">2</section>
+    <section class="s3">3</section>
+    <section class="s4">4</section>
+</main>
+<body>
+    <button type="button" id="pst">위치</button>
+    <script>
+        const section = document.querySelectorAll('section')
+        window.addEventListener('scroll',()=>{
+            console.log(section[1].getBoundingClientRect().top)
+            if(section[1].getBoundingClientRect().top < 200){
+                section[1].classList.add('animation')
+            }
+            if(section[2].getBoundingClientRect().top < 200){
+                section[2].classList.add('ani')
+            }
+            if(section[3].getBoundingClientRect().top < 200){
+                section[3].classList.add('a')
+            }
+        })
+</script>
+</body>
+</html>

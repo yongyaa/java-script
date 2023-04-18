@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll-1</title>
+    <style>
+        html,body {scroll-behavior:smooth;}
+        body {
+            height:200vh;
+            background:linear-gradient(aqua, pink, yellow, skyblue);
+        }
+        #scroll_btn {position:fixed; top:50%; right:50%; padding:20px 40px; box-sizing:border-box; background:none; font-size:3rem; transform:translate(50%, -50%);}
+        #top_btn {position:fixed; bottom:10%; right:3%; padding:20px 40px; background:none;}
+    </style>
+</head>
+<body>
+    <button type="button" id="scroll_btn">scroll</button>
+    <button type="button" id="top_btn">Up</button>
+    <script>
+        const btn = document.querySelector('#scroll_btn')
+        const top_btn = document.querySelector('#top_btn')
+        console.log(top_btn)
+
+        //window.scrollBy(x,y) 현재 위치 기준 스크롤 이동 함수 (상대적)
+        btn.addEventListener('click',()=>{
+            window.scrollBy(0, 100)
+        })
+
+        //window.scrollto(x,y) 문서의 지정된 위치로 스크롤 해주는 함수
+        // btn.addEventListener('click',()=>{
+        //     window.scrollTo({left:0, top:500})
+        //     // window.scrollTo(0, 500) //이런것도 있으니 기억속 저편에 가둬두어라 나오지 못하게.
+        // })
+        // top_btn.addEventListener('click',()=>{
+        //     window.scrollTo(0, 0)
+        //     console.log(top_btn)
+        // })
+    </script>
+</body>
+</html>

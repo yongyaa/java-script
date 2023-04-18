@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>interior-1</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <style>
+        body,html {scroll-behavior:smooth;}
+        header {
+            position:fixed; top:5%; left:3%;
+        }
+        header h1 {
+            font-size:2rem; font-weight:700;
+        }
+        header nav {padding-top:15px;}
+        header nav a {margin:0 10px;}
+        aside {position:fixed; left:3%; top:50%;}
+        aside .stick {display:block; width:20px; height:3px; background:#000; margin:10px 0;}
+        .bg {
+            height:100vh; width:100%;
+        }
+        .bg1 {background:url(./images/bg1.jpg)center no-repeat;}
+        .bg2 {background:url(./images/bg2.jpg)center no-repeat;}
+        .bg3 {background:url(./images/bg3.jpg)center no-repeat;}
+        .bg4 {background:url(./images/bg4.jpg)center no-repeat;}
+        aside .bar_active {width:80px; background:#fff; border-radius:20px;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Interior view</h1>
+        <nav>
+            <a href="#">A</a>
+            <a href="#">B</a>
+            <a href="#">C</a>
+            <a href="#">D</a>
+        </nav>
+    </header>
+    <aside>
+        <a href="#" class="stick first"></a>
+        <a href="#" class="stick second"></a>
+        <a href="#" class="stick third"></a>
+        <a href="#" class="stick fourth"></a>
+    </aside>
+    <main>
+        <section class="bg bg1"></section>
+        <section class="bg bg2"></section>
+        <section class="bg bg3"></section>
+        <section class="bg bg4"></section>
+    </main>
+    <script>
+        //버튼을 누르면 해당 페이지로 이동 시키고 좌측의 바 길이가 중간 지점쯤 왔을때 바가 길어지게 만들어 노비쉐리야
+        const a = document.querySelectorAll('a')
+        const bg = document.querySelectorAll('.bg')
+        const st = document.querySelectorAll('.stick')
+        // st.forEach((t,i)=>{
+        //     t.addEventListener('click',(e)=>{
+        //         e.preventDefault()
+        //         window.scrollTo(0. bg[i].offsetTop)
+        //     })
+        // })
+        
+        a.forEach((t,i)=>{
+            t.addEventListener('click',(e)=>{
+                e.preventDefault()
+                window.scrollTo(0, bg[i].offsetTop)
+            })
+        })
+        bar_move(0) //초기 bar 선언
+        window.addEventListener('scroll',()=>{
+            if(window.pageYOffset >= bg[0].offsetTop){bar_move(0)}
+            if(window.pageYOffset >= bg[1].offsetTop-200){bar_move(1)}
+            if(window.pageYOffset >= bg[2].offsetTop-200){bar_move(2)}
+            if(window.pageYOffset >= bg[3].offsetTop-200){bar_move(3)}
+        })
+
+        for(let i of st){i.style.transition = 'all 0.3s'}
+
+        function bar_move(num){
+            for(let i of st){i.classList.remove('bar_active')}
+            st[num].classList.add('bar_active')
+            st.forEach((t,i)=>{
+                t.addEventListener('click',(e)=>{
+                    e.preventDefault()
+                    window.scrollTo(0, bg[i].offsetTop)
+                })
+            })
+        }
+        console.log(st)
+    </script>
+</body>
+</html>

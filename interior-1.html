@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>interior-1</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <style>
+        body,html {scroll-behavior:smooth;}
+        .bg {height:100vh;}
+        .bg1 {background:url(./images/bg1.jpg)center no-repeat;}
+        .bg2 {background:url(./images/bg2.jpg)center no-repeat;}
+        .bg3 {background:url(./images/bg3.jpg)center no-repeat;}
+        .bg4 {background:url(./images/bg4.jpg)center no-repeat;}
+
+        .btn_wrap {     
+            display:flex; flex-flow:column wrap;
+            position:fixed;  right:50px; top:50%;
+        }
+
+        .btn_wrap .btn {
+            background:#222; color:#fff;
+            border-radius:50%; width:30px; height:30px;
+            overflow:hidden;
+            transition:all 0.5s;
+            position:absolute; right:0;
+        }
+
+        .btn_wrap a:nth-child(1):hover::after {content:'Interior A.';}
+        .btn_wrap a:nth-child(2):hover::after {content:'Interior B.';}
+        .btn_wrap a:nth-child(3):hover::after {content:'Interior C.';}
+        .btn_wrap a:nth-child(4):hover::after {content:'Interior D.';}
+
+        .btn_wrap a:nth-child(1) {top:0;}
+        .btn_wrap a:nth-child(2) {top:35px;}
+        .btn_wrap a:nth-child(3) {top:70px;}
+        .btn_wrap a:nth-child(4) {top:105px;}
+
+        .btn_wrap a:hover {
+            background:rgba(0,0,0,0.5); 
+            text-indent:0; width:100px; border-radius:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn_wrap">
+        <a href="#" class="btn btn1"></a>
+        <a href="#" class="btn btn2"></a>
+        <a href="#" class="btn btn3"></a>
+        <a href="#" class="btn btn4"></a>
+    </div>
+    <div class="bg bg1"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <div class="bg bg4"></div>
+    <script>
+        const btn = document.querySelectorAll('.btn')
+        const bg = document.querySelectorAll('.bg')
+        //btn을 눌렀을 때 해당 bg로 이동
+        
+        btn.forEach((obj, index)=>{
+            obj.addEventListener('click',(e)=>{
+                e.preventDefault() //버튼 이벤트 초기화
+                window.scrollTo(0, bg[index].offsetTop)
+            })
+        })
+
+    </script>
+</body>
+</html>
